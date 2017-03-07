@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>DataShow</title>
+</head>
+<body>
+<div class="dataTable">
+    <div class="menu-group">
+        <div id="add-button" class="button-style">添加</div>
+        <div id="edit-button" class="button-style">编辑</div>
+        <div id="delete-button" class="button-style">删除</div>
+    </div>
+    <table id="my-table" border="0" cellpadding="3" width="100%">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+    </table>
+    <div class="flip-menu-group">
+        <div>第<select id="page-select"></select>页 共<p id="total-page"></p>页</div>
+    </div>
+</div>
+<div id="dialog-bg"></div>
+<div id="dialog">
+    <p id="dialog-title"></p>
+    <form id="dialog-form" class="form-style"></form>
+    <div class="dialog-button">
+        <div id="submit-button">确定</div>
+        <div id="cancel-button">取消</div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/my_json.js"></script>
+</body>
+</html>

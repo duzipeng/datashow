@@ -1,0 +1,120 @@
+.tr-selected{
+    background-color: #666;
+}
+body {
+    background-color: #888;
+}
+.menu-group{
+    background-color: #666;
+    overflow: hidden; /*div进行浮动,脱离离外围的div,在外围div中加上overflow: hidden;可清楚浮动影响*/
+}
+.button-style{
+    display: inline;
+    border: 0 solid #000;
+    float: left;
+    color: #fff;
+    padding: 5px 20px;
+}
+.button-style:hover{
+    background-color: #000;
+}
+#my-table{
+    border-collapse: collapse;
+    border: none;
+    color: #fff;
+}
+#table-head{
+    border-right: solid #222 1px;
+    border-top: solid #222 1px;
+    background-color: #444;
+}
+#table-head th{
+    border-left: solid #222 1px;
+}
+#table-body tr:hover{
+    background-color: #aaa;
+}
+#my-table td{
+    border: solid #222 1px;
+}
+.table-checkbox{
+    width: 60px;
+}
+.table-checkbox input{
+    margin: 0 4px;
+}
+.flip-menu-group{
+    padding-left: 20px;
+    background-color: #666;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+#total-page{
+    display: inline;
+}
+#dialog-bg{
+    width:100%;
+    height:100%;
+    background-color:#000000;
+    opacity:.6;
+    filter:alpha(opacity=60);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+    display:none;
+}
+
+#dialog{
+    padding: 5px 8px ;
+    background-color: #555;
+    color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    margin:-120px 0 0 -150px;
+    border:1px solid #ccc;
+    display:none;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+}
+#dialog p:first-child{
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.form-style {
+    margin: 0;
+    background-color: #888;
+    border: 1px solid #444;
+    padding: 5px 20px;
+}
+#dialog-form p input[name = "id"]{
+    border: none;
+    background-color: #888;
+    color: #fff;
+}
+#dialog .dialog-button{
+    overflow: hidden;
+    background-color: #666;
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+    border-left: 1px solid #444;
+}
+#submit-button, #cancel-button{
+    float: right;
+    margin: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #888;
+    padding: 5px 18px;
+}
+#submit-button:hover, #cancel-button:hover{
+    background-color: #aaa;
+    cursor: pointer;
+    border-radius: 5px;
+}
