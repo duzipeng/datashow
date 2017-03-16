@@ -5,17 +5,32 @@ var TEXTAREA = 3;
 $(document).ready(function () {
     var url='http://account.rainmsg.com/json_admingetdb.php?table=test&page=1';
     datasgLoad(url);
+    var dialog_ele = $('#dialog-form');
 
     //添加按钮点击事件
     $('#add-button').on('click', function () {
+        var tag_name;
         $('#dialog-bg').show();
         $('#dialog-title').attr('value', 'add');
-        $('#dialog-form p input[name = "id"]').val('');
-        $('#dialog-form p input[name = "name"]').val('');
-        $('#dialog-form p input[name = "phone"]').val('');
-        $('#dialog-form p select[name = "sex"]').val('男');
-        $('#dialog-form p input[name = "old"]').val('');
-        $('#dialog-form p textarea').val('');
+        $.each(dialog_ele, function (index, value) {
+            $.each(value, function (info_index, info_value) {
+                tag_name = $(info_value).get(0).tagName;
+                console.log(tag_name);
+                switch (tag_name) {
+                    case 'INPUT':
+                        $(info_value).val('');
+                        break;
+                    case 'SELECT':
+                        $(info_value).find('option').eq(0).prop('selected', true);
+                        break;
+                    case 'TEXTAREA':
+                        $(info_value).val('');
+                        break;
+                    default:
+                        break;
+                }
+            })
+        });
         $('#dialog-title').text($(this).text());
         $('#dialog-form p input[name = "id"]').parent().hide();
         $('#dialog').show();
@@ -30,7 +45,7 @@ $(document).ready(function () {
             if ($(checkbox_value).prop('checked')) {
                 checked_num++;
                 if (checked_num == 1) {
-                    edit_checkbox = $(checkbox_value).parent().parent();
+                    edit_checkbox = $(checkbox_value).parent().parent().children();
                 }
             }
         });
@@ -40,13 +55,16 @@ $(document).ready(function () {
                 break;
             case 1:
                 $('#dialog-bg').show();
-                $('#dialog-form p input[name = "id"]').val(edit_checkbox.find('td[name="id"]').text());
                 $('#dialog-form p input[name = "id"]').parent().show();
-                $('#dialog-form p input[name = "name"]').val(edit_checkbox.find('td[name="name"]').text());
-                $('#dialog-form p input[name = "phone"]').val(edit_checkbox.find('td[name="phone"]').text());
-                $('#dialog-form p select[name = "sex"]').val(edit_checkbox.find('td[name="sex"]').text());
-                $('#dialog-form p input[name = "old"]').val(edit_checkbox.find('td[name="old"]').text());
-                $('#dialog-form p textarea').val(edit_checkbox.find('td[name="about"]').text());
+                $.each(edit_checkbox, function (td_index, td_value) {
+                    $.each(dialog_ele, function (form_index, form_value) {
+                        $.each(form_value, function (input_index, input_value) {
+                            if ($(td_value).attr('name') == $(input_value).attr('name')) {
+                                $(input_value).val($(td_value).text());
+                            }
+                        });
+                    });
+                });
                 $('#dialog-title').text($(this).text());
                 $('#dialog-title').attr('value', 'edit');
                 $('#dialog').show();
@@ -113,7 +131,6 @@ $(document).ready(function () {
                 default:
                     break;
             }
-        console.log(url);
         datasgLoad(url);
         $('#dialog-bg').hide();
         $('#dialog').hide();
@@ -121,7 +138,6 @@ $(document).ready(function () {
 
     //取消按钮点击事件
     $('#cancel-button').on('click', function () {
-        console.log($('#page-select option:selected'));
         if ($('#dialog-title').attr('value') == 'delete') {
             $('#dialog-form').show();
             $('#dialog-form').next().remove();
@@ -139,7 +155,6 @@ $(document).ready(function () {
 
 //加载页面数据
 function datasgLoad(url) {
-    console.log(url);
     $('#table-head').empty();
     $('#table-body').empty();
     $('#page-select').empty();

@@ -73,7 +73,7 @@ body {
     background-color: #555;
     color: #fff;
     position: fixed;
-    top: 50%;
+    top: 20%;
     left: 50%;
     z-index: 10000;
     margin:-120px 0 0 -150px;
